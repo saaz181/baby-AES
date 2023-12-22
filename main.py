@@ -25,15 +25,14 @@ def sub_bytes(state):
 
 
 def shift_rows(state, inverse=False):
-    print(state)
     rows = [state[i:i + 4] for i in range(0, 16, 4)]
-    shift = 1 if not inverse else -1
 
     for i in range(1, 4):
+        shift = -i if inverse else i
         rows[i] = rows[i][shift:] + rows[i][:shift]
 
-    return bytes([rows[j][i] for i in range(4) for j in range(4)])
-
+    result = [rows[j][i] for i in range(3) for j in range(3)]
+    return bytes(result)
 
 def mix_columns(state):
     matrix = [
@@ -42,6 +41,7 @@ def mix_columns(state):
         [0x01, 0x01, 0x02, 0x03],
         [0x03, 0x01, 0x01, 0x02]
     ]
+
 
     result = [0] * 16
     for i in range(4):
