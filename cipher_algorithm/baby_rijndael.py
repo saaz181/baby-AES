@@ -1,39 +1,4 @@
-"""
-Test Cases
-"""
-
-enc_block_set = [0x5b69, 0x8f57]
-enc_key_set = [0x87b2, 0x5274]
-
-dec_block_set = [0x4c8e, 0xb9d8]
-dec_key_set = [0x9440, 0xcb37]
-
-"""
-Enc, Dec Operation
-"""
-
-
 def babyr_enc(block, key):
-    """
-    block = [h_0, h_1, h_2, h_3] 2*2 matrix
-    key = [k_0, k_1, k_2, k_3] 2*2 matrix
-    a = initial 8*2 state matrix mapped from block
-    E(a) = r_4(r_3(r_2(r_1(a XOR km_0)))) (km: round key)
-    r_i(a) = (t * sigHat(S(a))) XOR km_i
-        - at each round, apply S -> apply sigHat -> apply multiply t
-
-    - S: S operation
-    - sigHat: swap entries in 2nd row of the 2*2 state
-    - t: an 8*2 matrix
-    - in r_4, multiplication by t is omitted.
-    - km_i: [w_2i, w_2i+1], where:
-        - w_0 = [k_0, k_1]
-        - w_1 = [k_2, k_3]
-        - w_2i = w_2i-2 XOR S(reverse(w_2i-1)) XOR y_i, and
-        - w_2i+1 = w_2i-1 XOR w_2i
-            - reverse: interchange 2 entries in a column
-            - y_i = [2^i-1, 0]
-    """
     # Assume block size of 16 bits, default round No. 4.
 
     # basic configuration: T matrix
@@ -80,13 +45,6 @@ def babyr_enc(block, key):
 
 
 def babyr_dec(block, key):
-    """
-    D(a) = ri_1(ri_2(ri_3(ri_4(a))))
-    ri_i(a) = Si(sigHat(ti * (a XOR km_i)))
-        - at each round, XOR km_i -> multiply ti -> apply sigHat -> apply Si
-        - at round 1, just XOR km_0
-    """
-
     # basic configuration: Ti matrix
     ti = [[0, 0, 1, 0, 0, 1, 0, 1], [1, 0, 0, 1, 1, 0, 1, 0], [1, 1, 0, 0, 1, 1, 0, 1], [0, 1, 0, 0, 1, 0, 1, 1], [
         0, 1, 0, 1, 0, 0, 1, 0], [1, 0, 1, 0, 1, 0, 0, 1], [1, 1, 0, 1, 1, 1, 0, 0], [1, 0, 1, 1, 0, 1, 0, 0]]
@@ -129,11 +87,6 @@ def babyr_dec(block, key):
             a = Si_operation(sig_hat_operation(
                 mult_m(ti, XOR_m(a, km_list[i], 4))))
     return a
-
-
-"""
-Auxiliary functions
-"""
 
 
 def mult_m(t, x):
@@ -252,13 +205,3 @@ def print_b(block):
         res += char_table[x]
     return res
 
-
-"""
-Main function: Execute the test
-"""
-
-for i in range(len(enc_block_set)):
-    print("encrypted: ", print_b(babyr_enc(enc_block_set[i], enc_key_set[i])))
-
-for i in range(len(dec_block_set)):
-    print("decrypted: ", print_b(babyr_dec(dec_block_set[i], dec_key_set[i])))
