@@ -16,15 +16,3 @@ def generate_random_dataset(size):
 
 # Example: Generate a dataset with 10 random pairs of blocks and keys
 random_dataset = generate_random_dataset(10)
-
-# # Example of how to use your encryption and decryption functions
-# for block, key in random_dataset:
-#     encrypted_block = babyr_enc(block, key)
-#     hex_string = ''.join([hex(b)[2:].zfill(2) for b in encrypted_block])
-
-#     decrypted_block = babyr_dec(int(hex_string, 16), key)
-    
-#     # print(f"Original Block: {print_b(block)}")
-#     print(f"Encrypted Block: {print_b(encrypted_block)}")
-#     print(f"Decrypted Block: {print_b(decrypted_block)}")
-#     print("=" * 20)

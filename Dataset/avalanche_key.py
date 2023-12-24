@@ -57,8 +57,4 @@ def avalanche_key_dataset(encryption_func, num_samples=1000, block_size=16):
     return dataset
 
 random.seed(42)  # For reproducibility
-dataset_avalanche_key = avalanche_key_dataset(babyr_enc, num_samples=1000)
-
-# # Print the first few samples
-# for sample in dataset[:5]:
-#     print(f"Plaintext: {sample['plaintext']}, Original Key: {sample['original_key']}, Modified Key: {sample['modified_key']}, Original Ciphertext: {sample['original_ciphertext']}, Modified Ciphertext: {sample['modified_ciphertext']}")
+dataset_avalanche_key = avalanche_key_dataset(babyr_enc, num_samples=10)

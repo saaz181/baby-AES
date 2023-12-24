@@ -24,14 +24,5 @@ def generate_high_density_plaintext_dataset(size, plaintext_density=0.8, key_den
         dataset.append((plaintext, key))
     return dataset
 
-# Example: Generate a dataset with 10 random pairs of high-density plaintexts and keys
+#  Generate a dataset with 10 random pairs of high-density plaintexts and keys
 high_density_plaintext_dataset = generate_high_density_plaintext_dataset(10, plaintext_density=0.8, key_density=0.8)
-
-# # Example of how to use your encryption function
-# for plaintext, key in high_density_plaintext_dataset:
-#     encrypted_block = babyr_enc(plaintext, key)
-    
-#     print(f"Original Plaintext: {plaintext}")
-#     print(f"Original Key: {key}")
-#     print(f"Encrypted Block: {print_b(encrypted_block)}")
-#     print("=" * 20)

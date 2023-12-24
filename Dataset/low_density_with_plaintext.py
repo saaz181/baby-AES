@@ -19,7 +19,7 @@ def generate_low_density_dataset(size, density=0.2):
         dataset.append((plaintext, key))
     return dataset
 
-# Example: Generate a dataset with 10 random pairs of low-density plaintexts and keys
+# Generate a dataset with 10 random pairs of low-density plaintexts and keys
 low_density_dataset = generate_low_density_dataset(10, density=0.2)
 
 # # Example of how to use your encryption function

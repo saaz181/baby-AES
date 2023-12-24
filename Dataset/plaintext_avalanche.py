@@ -12,8 +12,6 @@ def convert_list_of_bytes_to_hex(list_of_bytes: list) -> int:
     # Convert the concatenated hexadecimal string to an integer
     return int(hex_representation, 16)
 
-
-
 def encrypt(plaintext, key):
     # Replace this function with the actual encryption function
     return babyr_enc(plaintext, key)
@@ -50,11 +48,4 @@ def random_key():
 
 
 random.seed(42)  # For reproducibility
-dataset = plaintext_avalanche_dataset(babyr_enc, num_samples=1000)
-
-
-
-
-# # Print the first few samples
-# for sample in dataset[:10]:
-#     print(f"Plaintext: {sample['plaintext']}, Modified Plaintext: {sample['modified_plaintext']}, Original Ciphertext: {sample['original_ciphertext']}, Modified Ciphertext: {sample['modified_ciphertext']}")
+dataset = plaintext_avalanche_dataset(babyr_enc, num_samples=10)

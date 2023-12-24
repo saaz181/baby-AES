@@ -37,14 +37,5 @@ def generate_cbc_dataset(size):
 
     return dataset
 
-# Example: Generate a dataset with 10 random pairs of ciphertexts and keys in CBC mode
+# Generate a dataset with 10 random pairs of ciphertexts and keys in CBC mode
 cbc_dataset = generate_cbc_dataset(10)
-
-print(cbc_dataset)
-# # Example of how to use your decryption function for CBC mode
-# for ciphertext, key in cbc_dataset:
-#     decrypted_block = babyr_dec(ciphertext, key)
-    
-#     print(f"Original Ciphertext: {hex(ciphertext)}")
-#     print(f"Decrypted Block: {print_b(decrypted_block)}")
-#     print("=" * 20)

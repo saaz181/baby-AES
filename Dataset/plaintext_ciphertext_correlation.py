@@ -42,8 +42,4 @@ def plaintext_ciphertext_correlation_dataset(encryption_func, num_samples=1000, 
 
 # Example usage
 random.seed(42)  # For reproducibility
-dataset_correlation = plaintext_ciphertext_correlation_dataset(babyr_enc, num_samples=1000)
-
-# # Print the first few samples
-# for sample in dataset[:5]:
-#     print(f"Plaintext: {sample['plaintext']}, Key: {sample['key']}, Ciphertext: {sample['ciphertext']}")
+dataset_correlation = plaintext_ciphertext_correlation_dataset(babyr_enc, num_samples=10)

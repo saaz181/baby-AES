@@ -68,7 +68,6 @@ def binary_derivation_test_plaintext_ciphertext_correlation(dataset):
 
 
 def binary_derivation_test_cbc(dataset):
-    print(dataset)
     for ciphertext, key in dataset:
         original_block = convert_list_of_bytes_to_hex(babyr_dec(ciphertext, key))
 
