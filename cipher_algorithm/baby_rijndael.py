@@ -12,7 +12,6 @@ def babyr_enc(block, key):
     m3 = 0x000f
 
     # get state entries
-    print(f"{block=}")
     h0 = (block & m0) >> 12
     h1 = (block & m1) >> 8
     h2 = (block & m2) >> 4

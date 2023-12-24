@@ -28,11 +28,11 @@ def generate_low_density_key_dataset(size, plaintext_density=0.2, key_density=0.
 # Example: Generate a dataset with 10 random pairs of low-density plaintexts and keys
 low_density_key_dataset = generate_low_density_key_dataset(10, plaintext_density=0.2, key_density=0.2)
 
-# Example of how to use your encryption function
-for plaintext, key in low_density_key_dataset:
-    encrypted_block = babyr_enc(plaintext, key)
+# # Example of how to use your encryption function
+# for plaintext, key in low_density_key_dataset:
+#     encrypted_block = babyr_enc(plaintext, key)
     
-    print(f"Original Plaintext: {plaintext}")
-    print(f"Original Key: {key}")
-    print(f"Encrypted Block: {print_b(encrypted_block)}")
-    print("=" * 20)
+#     print(f"Original Plaintext: {plaintext}")
+#     print(f"Original Key: {key}")
+#     print(f"Encrypted Block: {print_b(encrypted_block)}")
+#     print("=" * 20)
